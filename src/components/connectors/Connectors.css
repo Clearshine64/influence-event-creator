@@ -1,0 +1,16 @@
+.connect-button {
+    cursor: pointer;
+    width: 280px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    padding: 0px 15px;
+    text-decoration: none;
+    color: #000000;
+    border: 1px solid #d5d5d5;
+    background: #e5e5e5;
+    display: inline-block;
+    border-radius: 5px;
+    position: relative;
+    text-align: left;
+}

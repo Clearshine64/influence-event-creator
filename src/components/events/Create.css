@@ -1,0 +1,90 @@
+.wallet-status {
+  display: inline-flex;
+  width: 315px;
+  float: right;
+  margin-top: -40px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .wallet-status {
+    margin-top: 0px;
+  }
+}
+
+.event-input {
+  width: 294px !important;
+  font-size: 12px !important;
+  line-height: 17px !important;
+  border-radius: 0 !important;
+  border: none !important;
+  border-bottom: 1px solid #000000 !important;
+  box-shadow: none !important;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'MyWebFont';
+}
+
+.event-empty {
+  width: 294px !important;
+  font-size: 12px !important;
+  line-height: 17px !important;
+  border-radius: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'MyWebFont';
+}
+
+.event-input:focus {
+  border:  none;
+}
+
+.event-input > input {
+  border: none;
+  box-shadow: none;
+  text-align: center;
+}
+
+.event-input > input:focus {
+  border: none;
+  box-shadow: none;
+}
+
+.btn-paid {
+  background-color: transparent;
+  padding: .55rem .75rem;
+  line-height: 17px !important;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 750px) {
+  .btn-paid, .event-empty, .event-price {
+    width: 147px !important;
+  }
+}
+
+.btn-word-left {
+  float: left;
+  margin-left: 20px;
+  letter-spacing: 2px;
+  font-size: 15px;
+}
+
+.btn-word-right {
+  float: right;
+  margin-right: 20px;
+  color: #f0f0f0;
+  letter-spacing: 2px;
+  font-size: 15px;
+}
+
+.error-message {
+  color: rgb(255, 0, 0);
+}
+
+.hover-text:hover {
+  color: #000000 !important;
+}
