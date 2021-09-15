@@ -151,7 +151,7 @@ class Create extends Component {
   
         try {
           const createStreamResponse = axios.post(
-            "https://livepeer.com/api/stream",
+            "http://localhost:4000/api/stream",
             {
               name: streamName,
               profiles: streamProfiles,
