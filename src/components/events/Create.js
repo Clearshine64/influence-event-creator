@@ -151,7 +151,7 @@ class Create extends Component {
   
         try {
           const createStreamResponse = axios.post(
-            "http://localhost:4000/api/stream",
+            "https://imbue-proxy.herokuapp.com/api/stream",
             {
               name: streamName,
               profiles: streamProfiles,
