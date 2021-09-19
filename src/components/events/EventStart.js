@@ -1,4 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
+import {
+  useParams
+} from "react-router-dom";
 import getWeb3 from "../../getWeb3";
 import ImbueEventsContract from '../../contracts/ImbuEvents.json';
 import CONTRACT_ADDRESS from '../../common/contracts';
@@ -26,6 +29,7 @@ export default () => {
   const mediaRecorderRef = useRef();
   const requestAnimationRef = useRef();
   const nameRef = useRef();
+  let { eventId } = useParams();
 
 
   useEffect(() => {
@@ -96,14 +100,17 @@ export default () => {
   const startStreaming = () => {
     setStreaming(true);
 
-    const protocol = window.location.protocol.replace('http', 'ws');
-    const wsUrl = `${protocol}//${window.location.host}/rtmp?key=${streamKey}`;
+    // const protocol = window.location.protocol.replace('http', 'ws');
+    // const wsUrl = `${protocol}//${window.location.host}/rtmp?key=${streamKey}`;
+    const wsUrl = `ws://imbue-proxy.herokuapp.com//rtmp?key=${streamKey}`;
     wsRef.current = new WebSocket(wsUrl);
 
+    const that = this;
     wsRef.current.addEventListener('open', function open() {
       setConnected(true);
 
-      contract.methods.startEvent(this.props.eventId).send({from: account});
+      console.log('evId', eventId);
+      contract.methods.startEvent(eventId).send({from: account});
     });
 
     wsRef.current.addEventListener('close', () => {
