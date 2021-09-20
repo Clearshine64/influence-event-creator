@@ -102,7 +102,7 @@ export default () => {
 
     // const protocol = window.location.protocol.replace('http', 'ws');
     // const wsUrl = `${protocol}//${window.location.host}/rtmp?key=${streamKey}`;
-    const wsUrl = `wss://imbue-proxy.herokuapp.com//rtmp?key=${streamKey}`;
+    const wsUrl = `wss://imbue-proxy.herokuapp.com/rtmp?key=${streamKey}`;
     wsRef.current = new WebSocket(wsUrl);
 
     const that = this;
