@@ -165,11 +165,7 @@ export default () => {
   return (
     <div className={styles.container}>
       <div className={styles.info}>
-        <h1>LandPeer</h1>
-        <p>
-        Live streams from the Metaverse
-        </p>
-
+        
         {cameraEnabled &&
           (streaming ? (
             <div>
