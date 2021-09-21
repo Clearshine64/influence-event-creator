@@ -205,6 +205,10 @@ export default () => {
         className={`${styles.videoContainer} ${
           cameraEnabled && styles.cameraEnabled
         }`}
+        style={{
+          position: 'relative',
+          textAlign: 'center'
+        }}
       >
         {!cameraEnabled && (
           <button className={styles.startButton} onClick={enableCamera}>
@@ -212,10 +216,15 @@ export default () => {
           </button>
         )}
         <div className={styles.inputVideo}>
-          <video ref={videoRef} muted playsInline></video>
+          <video ref={videoRef} muted playsInline style={{ visibility: 'hidden' }}></video>
         </div>
-        <div className={styles.outputCanvas}>
-          <canvas ref={canvasRef}></canvas>
+        <div className={`${styles.outputCanvas} d-flex justify-content-center`}>
+          <canvas 
+            ref={canvasRef} 
+            style={{
+              position: 'absolute',
+              top: 50
+            }}></canvas>
         </div>
       </div>
     </div>
