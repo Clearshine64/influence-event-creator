@@ -214,9 +214,6 @@ export default () => {
         <div className={styles.inputVideo}>
           <video ref={videoRef} muted playsInline></video>
         </div>
-        <div className={styles.outputCanvas}>
-          <canvas ref={canvasRef}></canvas>
-        </div>
       </div>
     </div>
   );
