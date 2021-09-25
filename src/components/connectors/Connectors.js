@@ -8,6 +8,7 @@ import fortmatic from '../../images/fortmatic.png';
 import portis from '../../images/portis.png';
 import walletconnection from '../../images/walletconnection.png';
 import impulse from '../../images/impulse.png';
+import { useHistory } from "react-router-dom";
 import './Connectors.css';
 
 function WrongNetwork(props) {
@@ -51,6 +52,7 @@ function Connectors() {
   // const { active, account, library, connector, activate, deactivate } = useWeb3React()
   const { activate } = useWeb3React()
   const [wrongNetwork, setWrongNetwork] = useState(false);
+  let history = useHistory();
 
   async function connectWallet (e) {
     const chainId = await injected.getChainId();
@@ -64,7 +66,8 @@ function Connectors() {
     setWrongNetwork(false);
     try {
       await activate(injected);
-      window.location = '/events';
+      // window.location = '/events';
+      history.push("/events");
     } catch (ex) {
       console.log(ex)
     }
