@@ -70,7 +70,7 @@ class Events extends Component {
   }
 
   goEventDetail = (event) => {
-    let redirectPath = `https://imbue-event-subscriber.herokuapp.com/event/${event[4]}/${event[0]}/${event[2]}`;
+    let redirectPath = `https://imbue-event-subscriber.on.fleek.co/event/${event[4]}/${event[0]}/${event[2]}`;
     window.open(redirectPath, '_blank');
   }
 
