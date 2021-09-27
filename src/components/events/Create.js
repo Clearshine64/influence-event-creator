@@ -122,7 +122,7 @@ class Create extends Component {
       });
     } else if (!this.state.isFreeOrPaid || (this.eventPrice && this.eventPrice.value !== '')) {
       if (this.state.walletBalance > 0) {
-        const apiKey = '40500865-8d73-47ef-a1ba-1e2610776430';
+        const apiKey = '38b71da0-48b3-4a87-9115-ef801769c46b';
         const streamName = 'test_stream';
         const streamProfiles = [
           {
