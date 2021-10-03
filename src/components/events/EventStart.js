@@ -217,7 +217,13 @@ export default () => {
         }}
       >
         {!cameraEnabled && (
-          <button className={styles.startButton} onClick={enableCamera}>
+          <button className={styles.startButton} onClick={enableCamera} style={{
+            position: 'fixed',
+            left: '50%',
+            top: '50%',
+            transform: 'translate(-50%, -50%)',
+            zIndex: '9'
+          }}>
             Enable Camera
           </button>
         )}
