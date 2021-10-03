@@ -17,7 +17,7 @@ export default () => {
   const [cameraEnabled, setCameraEnabled] = useState(false);
   const [streaming, setStreaming] = useState(false);
   const [streamKey, setStreamKey] = useState(null);
-  const [textOverlay, setTextOverlay] = useState('Live from the Metaverse!');
+  const [textOverlay, setTextOverlay] = useState('');
   const [account, setAccount] = useState(null);
   const [web3, setWeb3]  = useState(null);
   const [contract, setContract] = useState(null);
@@ -168,7 +168,10 @@ export default () => {
         
         {cameraEnabled &&
           (streaming ? (
-            <div>
+            <div style={{
+              position: 'relative',
+              zIndex: 5
+            }}>
               <span
                 className={`${styles.streamStatus} ${
                   connected ? styles.connected : styles.disconnected
@@ -185,7 +188,10 @@ export default () => {
               <button onClick={stopStreaming}>Stop Streaming</button>
             </div>
           ) : (
-            <>
+            <div style={{
+              position: 'relative',
+              zIndex: 5
+            }}>
               <input
                 placeholder="Livepeer Stream Key"
                 type="text"
@@ -198,7 +204,7 @@ export default () => {
               >
                 Start Streaming
               </button>
-            </>
+            </div>
           ))}
       </div>
       <div
@@ -211,7 +217,12 @@ export default () => {
         }}
       >
         {!cameraEnabled && (
-          <button className={styles.startButton} onClick={enableCamera}>
+          <button className={styles.startButton} onClick={enableCamera} style={{
+            position: 'fixed',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            zIndex: '9'
+          }}>
             Enable Camera
           </button>
         )}
@@ -222,8 +233,11 @@ export default () => {
           <canvas 
             ref={canvasRef} 
             style={{
-              position: 'absolute',
-              top: 50
+              position: 'fixed',
+              right: 0,
+              bottom: 0,              
+              minWidth: '100%', 
+              minHight: '100%'
             }}></canvas>
         </div>
       </div>

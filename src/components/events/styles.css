@@ -40,6 +40,11 @@
   width: 100%;
 }
 
+.actionGroup {
+  position: fixed;
+  top: 30px;
+}
+
 .videoContainer {
   position: relative;
   width: 100%;
@@ -50,6 +55,7 @@
 }
 
 .videoContainer .startButton {
+  position: relative;  
   font-size: 2em;
   margin: 0 auto;
   max-width: 50%;
