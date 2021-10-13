@@ -62,32 +62,32 @@ export default () => {
     canvasRef.current.height = videoRef.current.clientHeight;
     canvasRef.current.width = videoRef.current.clientWidth;
 
-    requestAnimationRef.current = requestAnimationFrame(updateCanvas);
+    // requestAnimationRef.current = requestAnimationFrame(updateCanvas);
 
     setCameraEnabled(true);
   };
 
-  const updateCanvas = () => {
-    if (videoRef.current.ended || videoRef.current.paused) {
-      return;
-    }
+  // const updateCanvas = () => {
+  //   if (videoRef.current.ended || videoRef.current.paused) {
+  //     return;
+  //   }
 
-    const ctx = canvasRef.current.getContext('2d');
+  //   const ctx = canvasRef.current.getContext('2d');
 
-    ctx.drawImage(
-      videoRef.current,
-      0,
-      0,
-      videoRef.current.clientWidth,
-      videoRef.current.clientHeight
-    );
+  //   ctx.drawImage(
+  //     videoRef.current,
+  //     0,
+  //     0,
+  //     videoRef.current.clientWidth,
+  //     videoRef.current.clientHeight
+  //   );
 
-    ctx.fillStyle = '#FB3C4E';
-    ctx.font = '50px Akkurat';
-    ctx.fillText(nameRef.current, 10, 50, canvasRef.current.width - 20);
+  //   ctx.fillStyle = '#FB3C4E';
+  //   ctx.font = '50px Akkurat';
+  //   ctx.fillText(nameRef.current, 10, 50, canvasRef.current.width - 20);
 
-    requestAnimationRef.current = requestAnimationFrame(updateCanvas);
-  };
+  //   requestAnimationRef.current = requestAnimationFrame(updateCanvas);
+  // };
 
   const stopStreaming = () => {
     if (mediaRecorderRef.current.state === 'recording') {
@@ -118,7 +118,7 @@ export default () => {
       stopStreaming();
     });
 
-    const videoOutputStream = canvasRef.current.captureStream(30); // 30 FPS
+    const videoOutputStream = canvasRef.current.captureStream(60); // 60 FPS
 
     // Let's do some extra work to get audio to join the party.
     // https://hacks.mozilla.org/2016/04/record-almost-everything-in-the-browser-with-mediarecorder/

@@ -230,7 +230,7 @@ class Create extends Component {
               marginTop: 70,
               fontSize:40,
               letterSpacing: "7px",
-              fontFamily: "MyWebFont",
+              fontFamily: "LuloCleanW01-One",
               color: "#3c3c3c",
             }}
           >
@@ -249,13 +249,14 @@ class Create extends Component {
               fontWeight: 500,
               marginLeft: 10,
               letterSpacing: 3,
+              borderRadius: 20, 
               width: "285px"
               }}>
               <span>{ Math.round(this.state.walletBalance * 100000) / 100000 + 'ETH' }</span>
               <span style={{ 
                 marginLeft: 10, 
                 padding: "5px 8px", 
-                borderRadius: 5, 
+                borderRadius: 20, 
                 backgroundColor: "#f7f8fa"
               }}>
                 <span>{ shortenText(this.state.address) }</span>

@@ -40,7 +40,7 @@ function WrongNetwork(props) {
             fontSize: 25,
             marginTop: 10,
             letterSpacing: "6px",
-            fontFamily: "MyWebFont"
+            fontFamily: "LuloCleanW01-One"
       }}>
         MUST BE ON THE <br/>OPTIMISM NETWORK <br/><p style={{ fontSize: '16px', color: '#333', letterSpacing: '1px'}}>Please click <a target="_blank" href="https://chainid.link/?network=optimism">here</a> to connect optimism network.</p>
       </div>
@@ -92,7 +92,7 @@ function Connectors() {
             marginTop: 70,
             fontSize:40,
             letterSpacing: "7px",
-            fontFamily: "MyWebFont",
+            fontFamily: "LuloCleanW01-One",
             color: "#3c3c3c",
           }}
         >

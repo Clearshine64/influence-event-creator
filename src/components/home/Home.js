@@ -43,7 +43,7 @@ export default function Home() {
             marginTop: 70,
             fontSize:40,
             letterSpacing: "7px",
-            fontFamily: "MyWebFont",
+            fontFamily: "LuloCleanW01-One",
             color: "#3c3c3c",
           }}
         >
