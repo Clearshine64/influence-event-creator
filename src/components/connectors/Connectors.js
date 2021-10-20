@@ -113,10 +113,11 @@ function Connectors() {
               backgroundColor: "#EDEDED",
               borderRadius: 10,
               textAlign: "left",
+              fontFamily: "LuloCleanW01-One",
               border: "1px solid #E9E9E9",
             }}
           >
-            Connect your wallet to Imbue
+            Connect your wallet to Imbue to get started!
             {/* <span style={{ color: "#FE4B39" }} href="terms"> Terms of Service</span> and
             acknowledge that you have read and understand the 
             <span style={{ color: "#FE4B39", textDecoration: "none" }} href="disc"> Uniswap protocol disclaimer.
