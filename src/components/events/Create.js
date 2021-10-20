@@ -241,7 +241,7 @@ class Create extends Component {
             </div>
             <div style={{ 
               height: 31, 
-              backgroundColor: "#edeef2", 
+              backgroundColor: "#242429", 
               fontSize: 11,
               lineHeight: "31px",
               paddingLeft: 10,
@@ -270,6 +270,7 @@ class Create extends Component {
               fontStyle: "normal",
               fontWeight: "normal",
               fontSize: "22px",
+              backgroundColor: "#ffffff",
               lineHeight: "27px",
               alignItems: "center",
               textAlign: "center",

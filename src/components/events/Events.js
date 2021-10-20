@@ -49,22 +49,22 @@ class Events extends Component {
   }
 
   startEvent = (id) => {
-    // let {events} = this.state;
-    // this.state.contract.methods.startEvent(id).send({from: this.state.account})
-    // .on('receipt', () => {
-    //   events.filter((event) => event.id === id).map((event) => {
-    //     event.isStarted = true;
-    //     event[8] = true;
-    //   })
-    //   this.setState({ events: events });
-    //   console.log('receipt');
-    // })
-    // .on('confirmation', (receipt) => {
-    //   console.log('event subscribed');
-    // })
-    // .on('error', function(error, receipt){
-    //   console.log(error);
-    // })
+    let {events} = this.state;
+    this.state.contract.methods.startEvent(id).send({from: this.state.account})
+    .on('receipt', () => {
+      events.filter((event) => event.id === id).map((event) => {
+        event.isStarted = true;
+        event[8] = true;
+      })
+      this.setState({ events: events });
+      console.log('receipt');
+    })
+    .on('confirmation', (receipt) => {
+      console.log('event subscribed');
+    })
+    .on('error', function(error, receipt){
+      console.log(error);
+    })
 
     this.props.history.push(`/event/${id}`);
   }
@@ -218,6 +218,7 @@ class Events extends Component {
                     style={{
                       textDecoration: "none",
                       letterSpacing: "1.5px",
+                      fontFamily: "LuloCleanW01-One",
                       color: "#919194",
                       fontSize: 20,
                       backgroundColor: "#242429",
