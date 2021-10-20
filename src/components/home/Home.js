@@ -93,6 +93,7 @@ export default function Home() {
               letterSpacing: "1.5px",
               color: "#919194",
               fontSize: 20,
+              fontFamily: "LuloCleanW01-One",
               backgroundColor: "#242429",
               padding: "10px 20px 10px 20px",
               borderRadius: "20px",
