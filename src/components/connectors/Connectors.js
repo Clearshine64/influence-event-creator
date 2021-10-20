@@ -106,7 +106,7 @@ function Connectors() {
             marginRight: "auto"
           }}
         >
-          {/* <div
+          <div
             style={{
               fontSize: 11,
               padding: 10,
@@ -116,12 +116,12 @@ function Connectors() {
               border: "1px solid #E9E9E9",
             }}
           >
-            By connecting a wallet, you agree to Uniswap Labs' 
-            <span style={{ color: "#FE4B39" }} href="terms"> Terms of Service</span> and
+            Connect your wallet to Imbue
+            {/* <span style={{ color: "#FE4B39" }} href="terms"> Terms of Service</span> and
             acknowledge that you have read and understand the 
             <span style={{ color: "#FE4B39", textDecoration: "none" }} href="disc"> Uniswap protocol disclaimer.
-            </span>
-          </div> */}
+            </span> */}
+          </div>
 
           <span className="connect-button" href="#" onClick={connectWallet}
               style={{ 
