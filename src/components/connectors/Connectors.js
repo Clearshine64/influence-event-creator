@@ -106,7 +106,7 @@ function Connectors() {
             marginRight: "auto"
           }}
         >
-          <div
+          {/* <div
             style={{
               fontSize: 11,
               padding: 10,
@@ -121,7 +121,8 @@ function Connectors() {
             acknowledge that you have read and understand the 
             <span style={{ color: "#FE4B39", textDecoration: "none" }} href="disc"> Uniswap protocol disclaimer.
             </span>
-          </div>
+          </div> */}
+
           <span className="connect-button" href="#" onClick={connectWallet}
               style={{ 
                 marginTop: 20,
@@ -129,7 +130,7 @@ function Connectors() {
             MetaMask
             <img style={{ height: 30, position: "absolute", top: 5, right: 10 }} src={metamask} alt='metamask' />
           </span>
-          <span className="connect-button"
+          {/* <span className="connect-button"
               style={{ marginTop: 10 }}>
             WalletConnection
             <img style={{ height: 30, position: "absolute", top: 5, right: 10 }} src={walletconnection} alt='walletconnection' />
@@ -148,7 +149,7 @@ function Connectors() {
               style={{ marginTop: 10 }}>
             Portis
             <img style={{ height: 30, position: "absolute", top: 5, right: 10 }} src={portis} alt='portis' />
-          </span>
+          </span> */}
         </div>
         <WrongNetwork networkStatus={wrongNetwork} />
       </Container>
