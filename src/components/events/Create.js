@@ -252,12 +252,14 @@ class Create extends Component {
               borderRadius: 20, 
               width: "285px"
               }}>
-              <span>{ Math.round(this.state.walletBalance * 100000) / 100000 + 'ETH' }</span>
+              <span>{ Math.round(this.state.walletBalance * 100000) / 100000 + 'ETH' } 
+              style={{ color: "#000000" }}</span>
               <span style={{ 
                 marginLeft: 10, 
+                textDecorationColor: "#f7f8fa",
                 padding: "5px 8px", 
                 borderRadius: 20, 
-                backgroundColor: "#f7f8fa"
+                backgroundColor: "#242429"
               }}>
                 <span>{ shortenText(this.state.address) }</span>
                 <img style={{ width: 12, marginLeft: 10 }} src={ethereum} alt='ethereum' />
