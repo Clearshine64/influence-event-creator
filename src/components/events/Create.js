@@ -241,7 +241,7 @@ class Create extends Component {
             </div>
             <div style={{ 
               height: 31, 
-              backgroundColor: "#242429", 
+              backgroundColor: "#edeef2", 
               fontSize: 11,
               lineHeight: "31px",
               paddingLeft: 10,
@@ -270,7 +270,6 @@ class Create extends Component {
               fontStyle: "normal",
               fontWeight: "normal",
               fontSize: "22px",
-              backgroundColor: "#ffffff",
               lineHeight: "27px",
               alignItems: "center",
               textAlign: "center",
@@ -349,6 +348,7 @@ class Create extends Component {
                   <button className="wallet-button" type="submit"
                     style={{
                       letterSpacing: "1.5px",
+                      fontFamily: "LuloCleanW01-One",
                       color: "#919194",
                       fontSize: 20,
                       backgroundColor: "#242429",
