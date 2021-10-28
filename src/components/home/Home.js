@@ -91,7 +91,7 @@ export default function Home() {
             style={{
               textDecoration: "none",
               letterSpacing: "1.5px",
-              color: "#919194",
+              color: "#ffffff",
               fontSize: 20,
               fontFamily: "LuloCleanW01-One",
               backgroundColor: "#242429",

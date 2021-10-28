@@ -7,8 +7,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShareSquare, faCopy } from '@fortawesome/free-solid-svg-icons';
 import './Events.css';
 import CONTRACT_ADDRESS from '../../common/contracts';
+import ethereum from '../../images/ethereum.jpg';
 const moment = require('moment');
 var CryptoJS = require("crypto-js");
+
+// function shortenText(text) {
+//   var ret = text;
+//   if (ret.length > 0) {
+//       ret = ret.substr(0, 6) + "..." + ret.substr(text.length - 5, text.length - 1);
+//   }
+//   return ret;
+// }
 
 class Events extends Component {
   constructor(props) {
@@ -27,16 +36,26 @@ class Events extends Component {
   }
 
   async loadBlockchainData() {
+
     const web3 = await getWeb3();
 
     // Use web3 to get the user's accounts.
     const accounts = await web3.eth.getAccounts();
     this.setState({ account: accounts[0] });
 
+    web3.eth.getBalance(web3.currentProvider.selectedAddress, (err, result) => {
+      if (err) {
+        console.log(err)
+      } else {
+        this.setState({ walletBalance: web3.utils.fromWei(result, "ether")});
+      }
+    })
+
     // Load abi and address from testnet
     const imbueEvents = new web3.eth.Contract(ImbueEventsContract.abi, CONTRACT_ADDRESS);
     this.setState({ web3, accounts, contract: imbueEvents });
 
+    // This might be where the error is for loading events
     // Load events
     const eventCount = await imbueEvents.methods.eventCount().call();
     this.setState({ eventCount });
@@ -106,19 +125,33 @@ class Events extends Component {
           >
             I M B U E
           </div>
-          <div
-            style={{
-              fontFamily: "LuloCleanW01-One",
-              fontStyle: "normal",
-              fontWeight: "normal",
-              fontSize: "22px",
-              lineHeight: "27px",
-              alignItems: "center",
-              textAlign: "center",
-              marginTop: 70,
-              letterSpacing: "6px",
-            }}
-          >
+          <div className="wallet-status">
+            <div style={{ width: 15, height: 15, backgroundColor: "#9CFFA6", borderRadius: "50%", marginTop: 8 }}>
+            </div>
+            <div style={{ 
+              height: 31, 
+              backgroundColor: "#edeef2", 
+              fontSize: 11,
+              lineHeight: "31px",
+              paddingLeft: 10,
+              paddingRight: 10,
+              fontWeight: 500,
+              marginLeft: 10,
+              letterSpacing: 3,
+              borderRadius: 20, 
+              width: "285px"
+              }}>
+              <span>{ Math.round(this.state.walletBalance * 100000) / 100000 + ' Ξ' } </span>
+              <span style={{ 
+                marginLeft: 10, 
+                padding: "5px 8px", 
+                borderRadius: 20, 
+                backgroundColor: "#f7f8fa"
+              }}>
+                <span>{ this.state.address }</span>
+                <img style={{ width: 12, marginLeft: 10 }} src={ethereum} alt='ethereum' />
+              </span>
+            </div>
             UP COMING
             <br /> EVENTS
           </div>
@@ -132,6 +165,7 @@ class Events extends Component {
                     <Link className="wallet-button" to="/event/create">CREATE EVENTS</Link>
                   </div>
                   {events.filter((event) => event.owner === account).map((event, index) => {
+                    console.log('hi1')
                     let streamData = CryptoJS.AES.decrypt(event.streamData, event.name).toString(CryptoJS.enc.Utf8).split('&&')
                     let streamKey = streamData[1];
                     return (
@@ -219,7 +253,7 @@ class Events extends Component {
                       textDecoration: "none",
                       letterSpacing: "1.5px",
                       fontFamily: "LuloCleanW01-One",
-                      color: "#919194",
+                      color: "#f9f9f9",
                       fontSize: 20,
                       backgroundColor: "#242429",
                       padding: "10px 20px 10px 20px",

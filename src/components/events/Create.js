@@ -252,14 +252,12 @@ class Create extends Component {
               borderRadius: 20, 
               width: "285px"
               }}>
-              <span>{ Math.round(this.state.walletBalance * 100000) / 100000 + 'ETH' } 
-              style={{ color: "#000000" }}</span>
+              <span>{ Math.round(this.state.walletBalance * 100000) / 100000 + ' Ξ' } </span>
               <span style={{ 
                 marginLeft: 10, 
-                textDecorationColor: "#f7f8fa",
                 padding: "5px 8px", 
                 borderRadius: 20, 
-                backgroundColor: "#242429"
+                backgroundColor: "#f7f8fa"
               }}>
                 <span>{ shortenText(this.state.address) }</span>
                 <img style={{ width: 12, marginLeft: 10 }} src={ethereum} alt='ethereum' />
@@ -299,7 +297,7 @@ class Create extends Component {
               <span className="mb-3 event-input btn-paid">
                 <span className='btn-word-left hover-text' 
                   onClick={this.setFree} 
-                  style={{ color: "rgb(183 175 175)" }}>FREE</span>
+                  style={{ color: "#000000" }}>FREE</span>
                 <span className='btn-word-right'
                  onClick={this.setPaid}
                  style={{ color: "#000000" }}>PAID</span>
@@ -335,7 +333,7 @@ class Create extends Component {
                   <button className="wallet-button" disabled={isLoading}
                     style={{
                       letterSpacing: "1.5px",
-                      color: "#919194",
+                      color: "#ffffff",
                       fontSize: 20,
                       backgroundColor: "#242429",
                       padding: "10px 20px 10px 20px",
@@ -351,7 +349,7 @@ class Create extends Component {
                     style={{
                       letterSpacing: "1.5px",
                       fontFamily: "LuloCleanW01-One",
-                      color: "#919194",
+                      color: "#f9f9f9",
                       fontSize: 20,
                       backgroundColor: "#242429",
                       padding: "10px 20px 10px 20px",
