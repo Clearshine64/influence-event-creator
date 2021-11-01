@@ -41,8 +41,7 @@ function WrongNetwork(props) {
             marginTop: 10,
             letterSpacing: "6px",
             fontFamily: "LuloCleanW01-One"
-      }}>
-        MUST BE ON THE <br/>OPTIMISM NETWORK <br/><p style={{ fontSize: '16px', color: '#333', letterSpacing: '1px'}}>Please click <a target="_blank" href="https://chainid.link/?network=optimism">here</a> to connect optimism network.</p>
+      }}><p style={{ fontSize: '16px', color: '#333', letterSpacing: '1px'}}>Please click <a target="_blank" href="https://chainid.link/?network=optimism-kovan">here</a> to connect optimism kovan network.</p>
       </div>
     </div>
   );
