@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Link, withRouter } from "react-router-dom";
 import { Container, Row, Col, OverlayTrigger, Popover } from "react-bootstrap";
-import ImbueEventsContract from '../../contracts/ImbuEvents.json';
+import ImbueEventsContract from '../../contracts/ImbuEvent.json';
 import getWeb3 from "../../getWeb3";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShareSquare, faCopy } from '@fortawesome/free-solid-svg-icons';
@@ -23,7 +23,6 @@ class Events extends Component {
 
   componentDidMount() {
     this.loadBlockchainData();
-    console.log('events page will mount');
   }
 
   async loadBlockchainData() {
@@ -34,14 +33,18 @@ class Events extends Component {
     this.setState({ account: accounts[0] });
 
     // Load abi and address from testnet
-    const imbueEvents = new web3.eth.Contract(ImbueEventsContract.abi, CONTRACT_ADDRESS);
+    const imbueEvents = new web3.eth.Contract(ImbueEventsContract, CONTRACT_ADDRESS);
     this.setState({ web3, accounts, contract: imbueEvents });
 
     // Load events
     const eventCount = await imbueEvents.methods.eventCount().call();
+    console.log("event count:");
+    console.log(eventCount);
     this.setState({ eventCount });
     for (var i = 1; i <= eventCount; i++) {
       const event = await imbueEvents.methods.events(i).call();
+      // console.log("event is here:");
+      // console.log(event);
       this.setState({
         events: [...this.state.events, event]
       })

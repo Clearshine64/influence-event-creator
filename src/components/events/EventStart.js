@@ -3,7 +3,7 @@ import {
   useParams
 } from "react-router-dom";
 import getWeb3 from "../../getWeb3";
-import ImbueEventsContract from '../../contracts/ImbuEvents.json';
+import ImbueEventsContract from '../../contracts/ImbuEvent.json';
 import CONTRACT_ADDRESS from '../../common/contracts';
 import styles from './styles.css';
 
@@ -41,7 +41,7 @@ export default () => {
       setAccount(accounts[0]);
 
       // Load abi and address from testnet
-      const imbueEvents = new web3.eth.Contract(ImbueEventsContract.abi, CONTRACT_ADDRESS);
+      const imbueEvents = new web3.eth.Contract(ImbueEventsContract, CONTRACT_ADDRESS);
 
       setWeb3(web3);
       setContract(imbueEvents);
@@ -102,7 +102,8 @@ export default () => {
 
     // const protocol = window.location.protocol.replace('http', 'ws');
     // const wsUrl = `${protocol}//${window.location.host}/rtmp?key=${streamKey}`;
-    const wsUrl = `wss://imbue-proxy.herokuapp.com/rtmp?key=${streamKey}`;
+    //const wsUrl = `wss://imbue-proxy.herokuapp.com/rtmp?key=${streamKey}`;
+    const wsUrl = `ws://localhost:4000/rtmp?key=${streamKey}`;
     wsRef.current = new WebSocket(wsUrl);
 
     const that = this;
