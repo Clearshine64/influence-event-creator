@@ -26,8 +26,8 @@ const getWeb3 = () =>
       // Fallback to localhost; use dev console port by default...
       else {
         const provider = new Web3.providers.HttpProvider(
-          "https://ropsten.infura.io/v3/e6e6fe9855904802b7427970bd71ab8d"
-          //"https://kovan.infura.io/v3/e6e6fe9855904802b7427970bd71ab8d"
+          // "https://ropsten.infura.io/v3/e6e6fe9855904802b7427970bd71ab8d"
+          "https://optimism-kovan.infura.io/v3/cc495f97ba594eb7ab53a27b56b4b9a0"
         );
         const web3 = new Web3(provider);
         console.log("No web3 instance injected, using Local web3.");

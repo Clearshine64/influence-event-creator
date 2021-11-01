@@ -3,10 +3,10 @@ import { useWeb3React } from "@web3-react/core";
 import { injected } from "../wallet/connectors";
 import { Container } from "react-bootstrap";
 import metamask from '../../images/metamask.svg';
-import coinbase from '../../images/coinbase.svg';
-import fortmatic from '../../images/fortmatic.png';
-import portis from '../../images/portis.png';
-import walletconnection from '../../images/walletconnection.png';
+// import coinbase from '../../images/coinbase.svg';
+// import fortmatic from '../../images/fortmatic.png';
+// import portis from '../../images/portis.png';
+// import walletconnection from '../../images/walletconnection.png';
 import impulse from '../../images/impulse.png';
 import { useHistory } from "react-router-dom";
 import './Connectors.css';
@@ -40,9 +40,8 @@ function WrongNetwork(props) {
             fontSize: 25,
             marginTop: 10,
             letterSpacing: "6px",
-            fontFamily: "MyWebFont"
-      }}>
-        MUST BE ON THE <br/>OPTIMISM NETWORK <br/><p style={{ fontSize: '16px', color: '#333', letterSpacing: '1px'}}>Please click <a target="_blank" href="https://chainid.link/?network=optimism">here</a> to connect optimism network.</p>
+            fontFamily: "LuloCleanW01-One"
+      }}><p style={{ fontSize: '16px', color: '#333', letterSpacing: '1px'}}>Please click <a target="_blank" href="https://chainid.link/?network=optimism-kovan">here</a> to connect optimism kovan network.</p>
       </div>
     </div>
   );
@@ -92,7 +91,7 @@ function Connectors() {
             marginTop: 70,
             fontSize:40,
             letterSpacing: "7px",
-            fontFamily: "MyWebFont",
+            fontFamily: "LuloCleanW01-One",
             color: "#3c3c3c",
           }}
         >
@@ -113,15 +112,17 @@ function Connectors() {
               backgroundColor: "#EDEDED",
               borderRadius: 10,
               textAlign: "left",
+              fontFamily: "LuloCleanW01-One",
               border: "1px solid #E9E9E9",
             }}
           >
-            By connecting a wallet, you agree to Uniswap Labs' 
-            <span style={{ color: "#FE4B39" }} href="terms"> Terms of Service</span> and
+            Connect your wallet to Imbue to get started!
+            {/* <span style={{ color: "#FE4B39" }} href="terms"> Terms of Service</span> and
             acknowledge that you have read and understand the 
             <span style={{ color: "#FE4B39", textDecoration: "none" }} href="disc"> Uniswap protocol disclaimer.
-            </span>
+            </span> */}
           </div>
+
           <span className="connect-button" href="#" onClick={connectWallet}
               style={{ 
                 marginTop: 20,
@@ -129,7 +130,7 @@ function Connectors() {
             MetaMask
             <img style={{ height: 30, position: "absolute", top: 5, right: 10 }} src={metamask} alt='metamask' />
           </span>
-          <span className="connect-button"
+          {/* <span className="connect-button"
               style={{ marginTop: 10 }}>
             WalletConnection
             <img style={{ height: 30, position: "absolute", top: 5, right: 10 }} src={walletconnection} alt='walletconnection' />
@@ -148,7 +149,7 @@ function Connectors() {
               style={{ marginTop: 10 }}>
             Portis
             <img style={{ height: 30, position: "absolute", top: 5, right: 10 }} src={portis} alt='portis' />
-          </span>
+          </span> */}
         </div>
         <WrongNetwork networkStatus={wrongNetwork} />
       </Container>

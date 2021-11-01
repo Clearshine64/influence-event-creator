@@ -43,7 +43,7 @@ export default function Home() {
             marginTop: 70,
             fontSize:40,
             letterSpacing: "7px",
-            fontFamily: "MyWebFont",
+            fontFamily: "LuloCleanW01-One",
             color: "#3c3c3c",
           }}
         >
@@ -91,8 +91,9 @@ export default function Home() {
             style={{
               textDecoration: "none",
               letterSpacing: "1.5px",
-              color: "#919194",
+              color: "#ffffff",
               fontSize: 20,
+              fontFamily: "LuloCleanW01-One",
               backgroundColor: "#242429",
               padding: "10px 20px 10px 20px",
               borderRadius: "20px",

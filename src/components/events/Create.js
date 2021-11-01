@@ -231,7 +231,7 @@ class Create extends Component {
               marginTop: 70,
               fontSize:40,
               letterSpacing: "7px",
-              fontFamily: "MyWebFont",
+              fontFamily: "LuloCleanW01-One",
               color: "#3c3c3c",
             }}
           >
@@ -250,13 +250,14 @@ class Create extends Component {
               fontWeight: 500,
               marginLeft: 10,
               letterSpacing: 3,
+              borderRadius: 20, 
               width: "285px"
               }}>
-              <span>{ Math.round(this.state.walletBalance * 100000) / 100000 + 'ETH' }</span>
+              <span>{ Math.round(this.state.walletBalance * 100000) / 100000 + ' Ξ' } </span>
               <span style={{ 
                 marginLeft: 10, 
                 padding: "5px 8px", 
-                borderRadius: 5, 
+                borderRadius: 20, 
                 backgroundColor: "#f7f8fa"
               }}>
                 <span>{ shortenText(this.state.address) }</span>
@@ -297,7 +298,7 @@ class Create extends Component {
               <span className="mb-3 event-input btn-paid">
                 <span className='btn-word-left hover-text' 
                   onClick={this.setFree} 
-                  style={{ color: "rgb(183 175 175)" }}>FREE</span>
+                  style={{ color: "#000000" }}>FREE</span>
                 <span className='btn-word-right'
                  onClick={this.setPaid}
                  style={{ color: "#000000" }}>PAID</span>
@@ -333,7 +334,7 @@ class Create extends Component {
                   <button className="wallet-button" disabled={isLoading}
                     style={{
                       letterSpacing: "1.5px",
-                      color: "#919194",
+                      color: "#ffffff",
                       fontSize: 20,
                       backgroundColor: "#242429",
                       padding: "10px 20px 10px 20px",
@@ -348,7 +349,8 @@ class Create extends Component {
                   <button className="wallet-button" type="submit"
                     style={{
                       letterSpacing: "1.5px",
-                      color: "#919194",
+                      fontFamily: "LuloCleanW01-One",
+                      color: "#f9f9f9",
                       fontSize: 20,
                       backgroundColor: "#242429",
                       padding: "10px 20px 10px 20px",
