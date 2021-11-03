@@ -3,7 +3,7 @@ import {
   useParams
 } from "react-router-dom";
 import getWeb3 from "../../getWeb3";
-import ImbueEventsContract from '../../contracts/ImbuEvents.json';
+import ImbueEventsContract from '../../contracts/ImbuEvent.json';
 import CONTRACT_ADDRESS from '../../common/contracts';
 import styles from './styles.css';
 
@@ -41,7 +41,7 @@ export default () => {
       setAccount(accounts[0]);
 
       // Load abi and address from testnet
-      const imbueEvents = new web3.eth.Contract(ImbueEventsContract.abi, CONTRACT_ADDRESS);
+      const imbueEvents = new web3.eth.Contract(ImbueEventsContract, CONTRACT_ADDRESS);
 
       setWeb3(web3);
       setContract(imbueEvents);
@@ -62,32 +62,32 @@ export default () => {
     canvasRef.current.height = videoRef.current.clientHeight;
     canvasRef.current.width = videoRef.current.clientWidth;
 
-    // requestAnimationRef.current = requestAnimationFrame(updateCanvas);
+    requestAnimationRef.current = requestAnimationFrame(updateCanvas);
 
     setCameraEnabled(true);
   };
 
-  // const updateCanvas = () => {
-  //   if (videoRef.current.ended || videoRef.current.paused) {
-  //     return;
-  //   }
+  const updateCanvas = () => {
+    if (videoRef.current.ended || videoRef.current.paused) {
+      return;
+    }
 
-  //   const ctx = canvasRef.current.getContext('2d');
+    const ctx = canvasRef.current.getContext('2d');
 
-  //   ctx.drawImage(
-  //     videoRef.current,
-  //     0,
-  //     0,
-  //     videoRef.current.clientWidth,
-  //     videoRef.current.clientHeight
-  //   );
+    ctx.drawImage(
+      videoRef.current,
+      0,
+      0,
+      videoRef.current.clientWidth,
+      videoRef.current.clientHeight
+    );
 
-  //   ctx.fillStyle = '#FB3C4E';
-  //   ctx.font = '50px Akkurat';
-  //   ctx.fillText(nameRef.current, 10, 50, canvasRef.current.width - 20);
+    ctx.fillStyle = '#FB3C4E';
+    ctx.font = '50px Akkurat';
+    ctx.fillText(nameRef.current, 10, 50, canvasRef.current.width - 20);
 
-  //   requestAnimationRef.current = requestAnimationFrame(updateCanvas);
-  // };
+    requestAnimationRef.current = requestAnimationFrame(updateCanvas);
+  };
 
   const stopStreaming = () => {
     if (mediaRecorderRef.current.state === 'recording') {
@@ -103,6 +103,7 @@ export default () => {
     // const protocol = window.location.protocol.replace('http', 'ws');
     // const wsUrl = `${protocol}//${window.location.host}/rtmp?key=${streamKey}`;
     const wsUrl = `wss://imbue-proxy.herokuapp.com/rtmp?key=${streamKey}`;
+    // const wsUrl = `ws://localhost:4000/rtmp?key=${streamKey}`;
     wsRef.current = new WebSocket(wsUrl);
 
     const that = this;
@@ -118,7 +119,7 @@ export default () => {
       stopStreaming();
     });
 
-    const videoOutputStream = canvasRef.current.captureStream(60); // 60 FPS
+    const videoOutputStream = canvasRef.current.captureStream(30); // 30 FPS
 
     // Let's do some extra work to get audio to join the party.
     // https://hacks.mozilla.org/2016/04/record-almost-everything-in-the-browser-with-mediarecorder/

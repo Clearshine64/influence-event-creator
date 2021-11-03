@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { withRouter } from 'react-router';
 import { Container, Form,  } from "react-bootstrap";
-import ImbueEventsContract from '../../contracts/ImbuEvents.json';
+import ImbueEventsContract from '../../contracts/ImbuEvent.json';
 import getWeb3 from "../../getWeb3";
 import DatetimeRangePicker from 'react-datetime-range-picker';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -81,7 +81,7 @@ class Create extends Component {
     })
 
     // Load abi and address from testnet
-    const imbueEvents = new web3.eth.Contract(ImbueEventsContract.abi, CONTRACT_ADDRESS);
+    const imbueEvents = new web3.eth.Contract(ImbueEventsContract, CONTRACT_ADDRESS);
     this.setState({ web3, accounts, contract: imbueEvents });
   }
 
@@ -122,7 +122,7 @@ class Create extends Component {
       });
     } else if (!this.state.isFreeOrPaid || (this.eventPrice && this.eventPrice.value !== '')) {
       if (this.state.walletBalance > 0) {
-        const apiKey = '38b71da0-48b3-4a87-9115-ef801769c46b';
+        const apiKey = 'dcb0e9e0-34c4-4829-b9fb-a17ada7100a7';
         const streamName = this.eventName.value;
         const streamProfiles = [
           {
@@ -152,6 +152,7 @@ class Create extends Component {
         try {
           const createStreamResponse = axios.post(
             "https://imbue-proxy.herokuapp.com/api/stream",
+            // "http://localhost:4000/api/stream",
             {
               name: streamName,
               profiles: streamProfiles,

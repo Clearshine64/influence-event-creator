@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Link, withRouter } from "react-router-dom";
 import { Container, Row, Col, OverlayTrigger, Popover } from "react-bootstrap";
-import ImbueEventsContract from '../../contracts/ImbuEvents.json';
+import ImbueEventsContract from '../../contracts/ImbuEvent.json';
 import getWeb3 from "../../getWeb3";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShareSquare, faCopy } from '@fortawesome/free-solid-svg-icons';
@@ -32,7 +32,6 @@ class Events extends Component {
 
   componentDidMount() {
     this.loadBlockchainData();
-    console.log('events page will mount');
   }
 
   async loadBlockchainData() {
@@ -43,24 +42,28 @@ class Events extends Component {
     const accounts = await web3.eth.getAccounts();
     this.setState({ account: accounts[0] });
 
-    web3.eth.getBalance(web3.currentProvider.selectedAddress, (err, result) => {
-      if (err) {
-        console.log(err)
-      } else {
-        this.setState({ walletBalance: web3.utils.fromWei(result, "ether")});
-      }
-    })
+    // web3.eth.getBalance(web3.currentProvider.selectedAddress, (err, result) => {
+    //   if (err) {
+    //     console.log(err)
+    //   } else {
+    //     this.setState({ walletBalance: web3.utils.fromWei(result, "ether")});
+    //   }
+    // })
 
     // Load abi and address from testnet
-    const imbueEvents = new web3.eth.Contract(ImbueEventsContract.abi, CONTRACT_ADDRESS);
+    const imbueEvents = new web3.eth.Contract(ImbueEventsContract, CONTRACT_ADDRESS);
     this.setState({ web3, accounts, contract: imbueEvents });
 
     // This might be where the error is for loading events
     // Load events
     const eventCount = await imbueEvents.methods.eventCount().call();
+    console.log("event count:");
+    console.log(eventCount);
     this.setState({ eventCount });
     for (var i = 1; i <= eventCount; i++) {
       const event = await imbueEvents.methods.events(i).call();
+      // console.log("event is here:");
+      // console.log(event);
       this.setState({
         events: [...this.state.events, event]
       })
@@ -68,22 +71,22 @@ class Events extends Component {
   }
 
   startEvent = (id) => {
-    let {events} = this.state;
-    this.state.contract.methods.startEvent(id).send({from: this.state.account})
-    .on('receipt', () => {
-      events.filter((event) => event.id === id).map((event) => {
-        event.isStarted = true;
-        event[8] = true;
-      })
-      this.setState({ events: events });
-      console.log('receipt');
-    })
-    .on('confirmation', (receipt) => {
-      console.log('event subscribed');
-    })
-    .on('error', function(error, receipt){
-      console.log(error);
-    })
+    // let {events} = this.state;
+    // this.state.contract.methods.startEvent(id).send({from: this.state.account})
+    // .on('receipt', () => {
+    //   events.filter((event) => event.id === id).map((event) => {
+    //     event.isStarted = true;
+    //     event[8] = true;
+    //   })
+    //   this.setState({ events: events });
+    //   console.log('receipt');
+    // })
+    // .on('confirmation', (receipt) => {
+    //   console.log('event subscribed');
+    // })
+    // .on('error', function(error, receipt){
+    //   console.log(error);
+    // })
 
     this.props.history.push(`/event/${id}`);
   }
