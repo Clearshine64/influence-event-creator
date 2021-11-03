@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Link, withRouter } from "react-router-dom";
 import { Container, Row, Col, OverlayTrigger, Popover } from "react-bootstrap";
 import ImbueEventsContract from '../../contracts/ImbuEvent.json';
@@ -101,8 +101,8 @@ class Events extends Component {
   }
 
   render() {
-    const {events, account} = this.state;
-    
+    const { events, account } = this.state;
+
     return (
       <div className="home">
         <Container
@@ -120,7 +120,7 @@ class Events extends Component {
             style={{
               textAlign: "center",
               marginTop: 70,
-              fontSize:40,
+              fontSize: 40,
               letterSpacing: "7px",
               fontFamily: "LuloCleanW01-One",
               color: "#3c3c3c",
@@ -160,79 +160,89 @@ class Events extends Component {
           </div> */}
           {
             events.length > 0 ?
-              ( <div>
-                  <div style={{
-                    textAlign: "center",
-                    marginTop: 30
-                  }}>
-                    <Link className="wallet-button" to="/event/create">CREATE EVENTS</Link>
-                  </div>
-                  {events.filter((event) => event.owner === account).map((event, index) => {
-                    console.log('hi1')
-                    let streamData = CryptoJS.AES.decrypt(event.streamData, event.name).toString(CryptoJS.enc.Utf8).split('&&')
-                    let streamKey = streamData[1];
-                    return (
+              (<div>
+                <div style={{
+                  textAlign: "center",
+                  marginTop: 30
+                }}>
+                  <Link className="wallet-button" to="/event/create"
+                    style={{
+                      textDecoration: "none",
+                      letterSpacing: "1.5px",
+                      fontFamily: "LuloCleanW01-One",
+                      color: "#f9f9f9",
+                      fontSize: 20,
+                      backgroundColor: "#242429",
+                      padding: "10px 20px 10px 20px",
+                      borderRadius: "20px",
+                    }}>CREATE EVENTS</Link>
+                </div>
+                {events.filter((event) => event.owner === account).map((event, index) => {
+                  console.log('hi1')
+                  let streamData = CryptoJS.AES.decrypt(event.streamData, event.name).toString(CryptoJS.enc.Utf8).split('&&')
+                  let streamKey = streamData[1];
+                  return (
                     <OverlayTrigger trigger="click" placement="top" key={index} overlay={
                       <Popover id="popover-basic">
                         <Popover.Title as="h3">Stream Key</Popover.Title>
                         <Popover.Content>
                           {streamKey}&nbsp;&nbsp;&nbsp;
-                          <FontAwesomeIcon icon={faCopy} 
+                          <FontAwesomeIcon icon={faCopy}
                             onClick={() => this.copyToClipboard(streamKey)}
                             style={{ cursor: 'pointer' }} />
                         </Popover.Content>
                       </Popover>
                     }>
-                    <div
-                      style={{
-                        backgroundColor: "#242429",
-                        borderRadius: 20,
-                        marginTop: 20,
-                        height: 60,
-                        marginBottom: 20
-                      }}
-                    >
-                      <Row>
-                        <Col sm={5}>
-                          <h4 title={event.description} style={{ color: "#FFFFFF", marginTop: 13, textAlign: 'left', paddingLeft: 30, letterSpacing: 2 }}>
-                            {event.name}
-                          </h4>
-                        </Col>
-                        <Col sm={3} style={{ color: "#FFFFFF", marginTop: 8 }}>
-                          {
-                            moment(event.startTime).format('MMM Do YYYY') === moment(event.endTime).format('MMM Do YYYY') ?
-                              <h5 style={{ textAlign: "center", marginLeft: 10, color: "#919194", fontSize: '1.15rem' }}>
-                                {moment(event.startTime).format('MMM Do YYYY')} <br /> 
-                                {moment(event.startTime).format('h A')} - {moment(event.endTime).format('h A')}
-                              </h5>
-                              :
-                              <h5 style={{ textAlign: "center", marginLeft: 10, color: "#919194", fontSize: '1.15rem' }}>
-                                {moment(event.startTime).format('MMM Do YYYY h A')} - <br /> 
-                                {moment(event.endTime).format('MMM Do YYYY h A')}
-                              </h5>
-                          }
-                        </Col>
-                        <Col sm={1} style={{ color: "#FFFFFF", marginTop: 15 }}>
-                          <FontAwesomeIcon className='icon-share' icon={faShareSquare} size="lg" 
-                          onClick={() => this.goEventDetail(event)} />
-                        </Col>
-                        <Col
-                         sm={3}
-                        >
-                           { !event.isStarted &&
-                            <h5 className="start-event" onClick={() => this.startEvent(event.id)}>
-                              START EVENT
+                      <div
+                        style={{
+                          backgroundColor: "#242429",
+                          borderRadius: 20,
+                          marginTop: 20,
+                          height: 60,
+                          marginBottom: 20
+                        }}
+                      >
+                        <Row>
+                          <Col sm={5}>
+                            <h4 title={event.description} style={{ color: "#FFFFFF", marginTop: 13, textAlign: 'left', paddingLeft: 30, letterSpacing: 2 }}>
+                              {event.name}
+                            </h4>
+                          </Col>
+                          <Col sm={3} style={{ color: "#FFFFFF", marginTop: 8 }}>
+                            {
+                              moment(event.startTime).format('MMM Do YYYY') === moment(event.endTime).format('MMM Do YYYY') ?
+                                <h5 style={{ textAlign: "center", marginLeft: 10, color: "#919194", fontSize: '1.15rem' }}>
+                                  {moment(event.startTime).format('MMM Do YYYY')} <br />
+                                  {moment(event.startTime).format('h A')} - {moment(event.endTime).format('h A')}
+                                </h5>
+                                :
+                                <h5 style={{ textAlign: "center", marginLeft: 10, color: "#919194", fontSize: '1.15rem' }}>
+                                  {moment(event.startTime).format('MMM Do YYYY h A')} - <br />
+                                  {moment(event.endTime).format('MMM Do YYYY h A')}
+                                </h5>
+                            }
+                          </Col>
+                          <Col sm={1} style={{ color: "#FFFFFF", marginTop: 15 }}>
+                            <FontAwesomeIcon className='icon-share' icon={faShareSquare} size="lg"
+                              onClick={() => this.goEventDetail(event)} />
+                          </Col>
+                          <Col
+                            sm={3}
+                          >
+                            {!event.isStarted &&
+                              <h5 className="start-event" onClick={() => this.startEvent(event.id)}>
+                                START EVENT
                             </h5>
-                          }
-                        </Col>
-                      </Row>
-                    </div>
+                            }
+                          </Col>
+                        </Row>
+                      </div>
                     </OverlayTrigger>)
-                  })
+                })
                 }
               </div>)
-            :
-            ( <div
+              :
+              (<div
                 style={{
                   fontFamily: "LuloCleanW01-One",
                   fontStyle: "normal",
@@ -266,7 +276,7 @@ class Events extends Component {
                 </div>
               </div>)
           }
-          
+
         </Container>
       </div>
     );
