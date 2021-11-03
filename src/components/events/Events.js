@@ -125,7 +125,7 @@ class Events extends Component {
           >
             I M B U E
           </div>
-          <div className="wallet-status">
+          {/* <div className="wallet-status">
             <div style={{ width: 15, height: 15, backgroundColor: "#9CFFA6", borderRadius: "50%", marginTop: 8 }}>
             </div>
             <div style={{ 
@@ -154,7 +154,7 @@ class Events extends Component {
             </div>
             UP COMING
             <br /> EVENTS
-          </div>
+          </div> */}
           {
             events.length > 0 ?
               ( <div>
