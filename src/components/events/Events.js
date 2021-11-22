@@ -27,7 +27,7 @@ class Events extends Component {
       events: [],
     }
 
-    this.loadBlockchainData = this.loadBlockchainData.bind(this);
+    // this.loadBlockchainData = this.loadBlockchainData.bind(this);
   }
 
   componentDidMount() {
